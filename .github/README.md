@@ -12,9 +12,10 @@ Default models pre-trained on 0-9 words: zero one two three four five six seven 
     ~$ fe test.wav | bin/guess models/mlp.tflite
     ~$ fe test.wav | bin/guess models/cnn.tflite
     ~$ fe test.wav | bin/guess models/rnn.tflite
+    ~$ fe test.wav | bin/guess models/dcnn.tflite
 
 ### Training
-Jupyter Notebooks [MLP](jupyter/mlp.ipynb) | [CNN](jupyter/cnn.ipynb) | [RNN](jupyter/rnn.ipynb). 
+Jupyter Notebooks [MLP](jupyter/mlp.ipynb) | [CNN](jupyter/cnn.ipynb) | [RNN](jupyter/rnn.ipynb) | [DCNN](jupyter/dcnn.ipynb).
 
 Each notebook generates model file. To evaluate model accuracy:
 
@@ -70,6 +71,21 @@ Confusion matrix for pre-trained modeles:
     #pub#  0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.99 | 730
     RNN guessed wrong 220...
 
+    DCNN confusion matrix...
+    zero   0.98 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.00 0.00 0.00 0.00 | 603
+    one    0.00 0.98 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.01 0.00 | 575
+    two    0.01 0.00 0.98 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.00 | 564
+    three  0.00 0.00 0.00 0.97 0.00 0.00 0.01 0.00 0.01 0.00 0.00 0.00 | 548
+    four   0.00 0.00 0.00 0.00 0.98 0.00 0.00 0.00 0.00 0.00 0.01 0.00 | 605
+    five   0.00 0.00 0.00 0.00 0.00 0.98 0.00 0.00 0.00 0.00 0.01 0.00 | 607
+    six    0.00 0.00 0.00 0.00 0.00 0.00 0.99 0.00 0.00 0.00 0.00 0.00 | 462
+    seven  0.00 0.00 0.00 0.00 0.00 0.00 0.00 1.00 0.00 0.00 0.00 0.00 | 574
+    eight  0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.99 0.00 0.01 0.00 | 547
+    nine   0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.98 0.01 0.00 | 596
+    #unk#  0.00 0.01 0.01 0.01 0.01 0.00 0.00 0.00 0.00 0.00 0.94 0.00 | 730
+    #pub#  0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 0.00 1.00 | 730
+    DCNN guessed wrong 143...
+
 ### Heap Memory Usage
 Some magic numbers to know before stepping into embedded world.
 
@@ -77,3 +93,4 @@ Some magic numbers to know before stepping into embedded world.
     ~$ fe test.wav | valgrind bin/guess models/mlp.tflite              # 347,138 bytes allocated
     ~$ fe test.wav | valgrind bin/guess models/cnn.tflite              # 1,793,114 bytes allocated
     ~$ fe test.wav | valgrind bin/guess models/rnn.tflite              # 2,442,810 bytes allocated
+    ~$ fe test.wav | valgrind bin/guess models/dcnn.tflite             # 595,958 bytes allocated

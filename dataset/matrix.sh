@@ -46,6 +46,7 @@ do_all() {
   echo "${title} guessed wrong `do_validation ${model} 2> >(grep -v "INFO: Initialized TensorFlow Lite runtime.") | wc -l`..."
 }
 
-do_all 'MLP' 'mlp.tflite'
-do_all 'CNN' 'cnn.tflite'
-do_all 'RNN' 'rnn.tflite'
+do_all 'MLP'  'mlp.tflite'
+do_all 'CNN'  'cnn.tflite'
+do_all 'RNN'  'rnn.tflite'
+do_all 'DCNN' 'dcnn.tflite'
